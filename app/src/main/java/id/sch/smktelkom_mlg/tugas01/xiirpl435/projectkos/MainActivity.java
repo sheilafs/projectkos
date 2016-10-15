@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Button bOK;
     TextView tvHasil;
     RadioButton rbW, rbL;
+    CheckBox cbKMD, cbWF, cbM, cbCB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         bOK = (Button) findViewById(R.id.buttonOK);
         rbW = (RadioButton) findViewById(R.id.radioButtonWa);
         rbL = (RadioButton) findViewById(R.id.radioButtonLa);
+        cbKMD = (CheckBox) findViewById(R.id.checkBoxKMD);
+        cbWF = (CheckBox) findViewById(R.id.checkBoxWF);
+        cbM = (CheckBox) findViewById(R.id.checkBoxM);
+        cbCB = (CheckBox) findViewById(R.id.checkBoxCB);
 
         tvHasil = (TextView)findViewById(R.id.textViewHasil);
 
@@ -44,19 +50,33 @@ public class MainActivity extends AppCompatActivity {
     private void doClick() {
         String hasil = null;
         String nama = etNama.getText().toString();
-
+        String hasill = " \n Fasilitas : \n";
+        int startlen = hasill.length();
+        
         if(rbW.isChecked()){
             hasil = rbW.getText().toString();
+            if (cbKMD.isChecked()) hasill+=cbKMD.getText()+"\n";
+            if (cbWF.isChecked()) hasill+=cbWF.getText()+"\n";
+            if (cbM.isChecked()) hasill+=cbM.getText()+"\n";
+            if (cbCB.isChecked()) hasill+=cbCB.getText()+"\n";
+
+            if (hasil.length()==startlen) hasill+= "Tidak memilih fasilitas";
         }
-        else {
+        else if (rbL.isChecked()){
             hasil = rbL.getText().toString();
+            if (cbKMD.isChecked()) hasill+=cbKMD.getText()+"\n";
+            if (cbWF.isChecked()) hasill+=cbWF.getText()+"\n";
+            if (cbM.isChecked()) hasill+=cbM.getText()+"\n";
+            if (cbCB.isChecked()) hasill+=cbCB.getText()+"\n";
+
+            if (hasil.length()==startlen) hasill+= "Tidak memilih fasilitas";
         }
 
         if (hasil == null){
             tvHasil.setText("Nama : " +nama+ "\n Belum memilih jenis kelamin");
         }
         else{
-            tvHasil.setText("Nama : "+nama+"\n Jenis kelamin anda : "+hasil);
+            tvHasil.setText("Nama : "+nama+"\n Jenis kelamin anda : "+hasil + hasill);
         }
     }
 }
