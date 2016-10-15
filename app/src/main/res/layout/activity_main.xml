@@ -109,7 +109,7 @@
             android:id="@+id/textView3" />
 
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:entries="@array/daerah"
             android:id="@+id/spinnerDaerah" />
