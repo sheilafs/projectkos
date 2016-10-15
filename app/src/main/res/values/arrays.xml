@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string-array name="daerah">
+        <item>Klojen</item>
+        <item>Blimbing</item>
+        <item>Kedung Kandang</item>
+        <item>Lowokwaru</item>
+        <item>Sukun</item>
+    </string-array>
+</resources>

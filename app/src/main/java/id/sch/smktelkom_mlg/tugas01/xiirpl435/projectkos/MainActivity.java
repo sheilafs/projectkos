@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvHasil;
     RadioButton rbW, rbL;
     CheckBox cbKMD, cbWF, cbM, cbCB;
+    Spinner spDaerah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         cbWF = (CheckBox) findViewById(R.id.checkBoxWF);
         cbM = (CheckBox) findViewById(R.id.checkBoxM);
         cbCB = (CheckBox) findViewById(R.id.checkBoxCB);
+        spDaerah = (Spinner) findViewById(R.id.spinnerDaerah);
 
         tvHasil = (TextView)findViewById(R.id.textViewHasil);
 
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         String nama = etNama.getText().toString();
         String hasill = " \n Fasilitas : \n";
         int startlen = hasill.length();
-        
+
         if(rbW.isChecked()){
             hasil = rbW.getText().toString();
             if (cbKMD.isChecked()) hasill+=cbKMD.getText()+"\n";
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             tvHasil.setText("Nama : " +nama+ "\n Belum memilih jenis kelamin");
         }
         else{
-            tvHasil.setText("Nama : "+nama+"\n Jenis kelamin anda : "+hasil + hasill);
+            tvHasil.setText("Nama : "+nama+"\n Jenis kelamin anda : "+hasil + hasill+ " Daerah Kos : " +spDaerah.getSelectedItem().toString());
         }
     }
 }
